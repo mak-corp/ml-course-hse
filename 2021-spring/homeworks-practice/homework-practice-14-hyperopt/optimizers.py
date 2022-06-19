@@ -149,7 +149,7 @@ class BaseOptimizer(BaseEstimator, ABC):
         if not hasattr(self.best_estimator, 'predict_proba'):
             raise ValueError('Estimator does not support predict_proba')
 
-        y_pred = np.zeros(X_test.shape[0], 1)
+        y_pred = np.zeros((X_test.shape[0], 1))
         # your code here ┐(シ)┌
         return y_pred
 
@@ -185,7 +185,7 @@ class GPOptimizer(BaseOptimizer):
         Calculate EI values for passed parameters of normal distribution
         hint: consider using scipy.stats.norm
         Params:
-          - y_star: optimal (minimal) score value
+          - y_star: optimal (maximal) score value
           - mu: array of mean values of normal distribution of size (num_samples_per_run, )
           - sigma: array of std values of normal distribution of size (num_samples_per_run, )
         Retuns:
